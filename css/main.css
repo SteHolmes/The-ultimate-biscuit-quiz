@@ -1,0 +1,286 @@
+/* GENERAL STYLES */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font: normal 18px sans-serif;
+	color: #555;
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 80px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #1f2323;
+  text-shadow: 2px 2px 0px #fff;
+}
+
+h1 i {
+  font-size: 90px;
+}
+
+h3 {
+  font-family: 'Days One', sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+  color: #fff;
+}
+
+i {
+  font-size: 42px;
+  padding: 0 10px;
+  color: #fff;
+  text-shadow: none;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  padding: 50px;
+}
+
+button {
+  margin: 25px;
+  width: 110px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  background-color: #49abcc;
+  color: #fff;
+  font-family: 'Days One', sans-serif;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #189dcb;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: #000;
+  background-color: #fff;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* INTRO SECTION */
+
+.intro {
+  position: relative;
+	justify-content: center;
+	text-align: center;
+	min-height: 100vh;
+  overflow: hidden;
+}
+
+.intro .background-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-color: #80a3db;
+  z-index: -2;
+  filter: grayscale(1);
+}
+
+.intro .color-filter {
+  position: absolute;
+  background-color: #fc6400;
+  top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+#intro-content-area {
+  padding-top: 50px;
+}
+
+.main-title {
+  padding: 10px 0;
+  transform: translateY(100vh) translateY(20px);
+  transform-origin: bottom;
+  animation: slide-up 1.5s cubic-bezier(0.175, 0.885, 0.8, 1.275) 0.3s forwards;
+}
+
+@keyframes slide-up {
+  80% {
+    transform: translateY(-80px);
+  }
+  
+  90% {
+    transform: translateY(24px) scaleY(0.9); 
+  }
+  95% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: translateY(25px) scaleY(1); 
+  }
+}
+
+.slide-intro-left {
+  animation: slide-left 1s forwards 0.3s;
+}
+
+@keyframes slide-left {
+  100% {
+    transform: translateX(-4000px);
+  }
+}
+
+#intro-content-area h1 {
+  margin-bottom: 10px;
+}
+
+#intro-content-area .blurb {
+  color: #fff;
+  margin-top: -30px;
+  opacity: 0;
+  animation: drop-fade-in 1s 2.2s forwards ease-in;
+}
+
+@keyframes drop-fade-in {
+  100% {
+    opacity: 1;
+    margin-top: 10px;
+  }
+}
+#intro-content-area p {
+  font-family: 'Encode Sans', sans-serif;
+}
+
+/*  QUIZ SECTION */
+
+#quiz-container {
+  background-image: url("https://www.onlygfx.com/wp-content/uploads/2017/06/watercolor-circle-pattern-orange.png");
+  display: none;
+  flex-direction: column;
+}
+
+#quiz-container h1 {
+  text-align: center;
+}
+
+#quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+fieldset {
+  background-color: #fffffe;
+  width: 50%;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 5px;
+  border-color: #fc6400;
+  box-shadow: 0px 0px 5px #7f6c66;
+}
+
+legend {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 30px;
+  padding: 5px;
+  background-color: #fff;
+  padding: 0 20px;
+  border: 2px solid #fc6400;
+  border-radius: 20px;
+}
+
+input {
+  cursor: pointer;
+}
+
+.img-option {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+/* SUBMIT SECTION */
+
+#submit {
+  display: none;
+  padding: 0;
+  margin-top: 40px; 
+}
+
+/* RESULTS SECTION */
+#results {
+  position: relative;
+  display: none;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2em;
+  text-align: center;
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fade 0.8s forwards;
+}
+
+.fade-out {
+  animation: fade 0.8s forwards reverse;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#refresh {
+  color: #fc6400;
+  font-size: 15px;
+  padding-top: 30px;
+  cursor: pointer;
+  opacity: 0.7
+}
+
+#refresh:hover {
+  opacity: 1;
+}
+
+#refresh i {
+  color: #fc6400;
+  font-size: 15px;
+}
+
+.biscuit-result {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 80px;
+  font-weight: 200;
+}
+
+@media (max-width: 1200px) {
+  fieldset { 
+    width: 90%;
+  }
+}
