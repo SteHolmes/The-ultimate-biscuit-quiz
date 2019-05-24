@@ -9,6 +9,8 @@ const option = document.getElementsByClassName("option")[0];
 const submitSection = document.getElementById("submit");
 const submitBtn = document.getElementsByClassName("submit-btn")[0];
 
+const loadingScreen = document.getElementById("loading-screen");
+
 const resultsSection = document.getElementById("results");
 const refreshBtn = document.getElementById("refresh");
 
@@ -120,6 +122,25 @@ var questions = [
   }
 ]
 
+var type = {
+   a: {
+      name: ["Chocolate Chip Cookie", "Custard Cream", "Ginger Nut", "Chocolate Hobnob"],
+      desc: "A bit of a loose cannon but always a crowd pleaser"
+    },
+   b: {
+      name: ["Party Ring", "Pink Wafer", "Wagon Wheel", "Jammie Dodger"],
+      desc: "The life and soul of the party and always game for a laugh"
+    },
+   c: {
+      name: ["Chocolate Digestive", "Shortbread", "Viennese Sandwich", "Chocolate Bourbon"],
+      desc: "Comfortable in most situations and great with a cup of tea"
+    },
+   d: {
+      name: ["Jaffa Cake", "Rich Tea", "Chocolate Finger", "Garibaldi biscuit"],
+      desc: "What is a biscuit anyway? What's the science behind all of this? Do you even care?"
+    }
+  };
+
 // GENERATE QUIZ //
 function createQuiz(){
   var output = [];
@@ -159,8 +180,11 @@ function calculateResults(){
   if(selectedAnswers.length === 0 && errorMsg === undefined) {
     addMsg("Please answer at least one question to discover your inner biscuit", quizContainer);
   } else { 
-  resultsSection.innerHTML = `<p>You are a <br><span class='biscuit-result'>${mostFreqChoice(selectedAnswers)}</span></p><p id='refresh'><i class='fas fa-redo-alt fa-0.5x'></i>Restart</p>`;
-  transition(quizContainer, resultsSection);
+  resultsSection.innerHTML = `<p>You are a <br><span class='biscuit-result'>${mostFreqChoice(selectedAnswers)[0]}</span><br><span class="biscuit-desc">${mostFreqChoice(selectedAnswers)[1]}</span></p><p id='refresh'><i class='fas fa-redo-alt fa-0.5x'></i>Restart</p>`;
+  transition(quizContainer, loadingScreen);
+  setTimeout(function() {
+    transition(loadingScreen, resultsSection)
+  }, 4000);
   }
 }
 
@@ -184,26 +208,26 @@ function mostFreqChoice(arr) {
     }
   });
   
-  // RETURN STRING AT THE FIRST INDEX OF 'LETTER' ARRAY //
-  // TO AVOID ERRORS WHEN THERE ARE EQUAL INSTANCES OF MORE THAN ONE LETTER // 
+  // RETURNING THE STRING AT THE FIRST INDEX OF 'LETTER' ARRAY PROVIDES THE MOST//
+  // FREQ LETTER, AND ALSO AVOIDS ERRORS WHEN THERE ARE EQUAL INSTANCES OF MORE THAN ONE LETTER // 
   return biscuitType(letter[0]);
 }
 
 // ASSIGN LETTERS TO TYPES OF BISCUIT //
 function biscuitType(mostFreqLetter) {
-  var type = {
-    a: ["Chocolate Chip Cookie", "Custard Cream", "Ginger Nut", "Chocolate Hobnob"],
-    b: ["Party Ring", "Pink Wafer", "Oreo", "Jammie Dodger"],
-    c: ["Chocolate Digestive", "Shortbread", "Viennese Sandwich", "Chocolate Bourbon"],
-    d: ["Jaffa Cake", "Rich Tea", "Chocolate Finger", "Garibaldi biscuit"]
-  };
+  
+  var arr = [];
   
   function randomInt() {
     return (Math.floor((Math.random() * 4)));
   };
   
-  return type[mostFreqLetter][randomInt()];
+  arr.push(type[mostFreqLetter].name[randomInt()]);
+  arr.push(type[mostFreqLetter].desc)
+  return arr;
 }
+
+
 
 // FUNCTION TO ADD AN ERROR MSG TO THE //
 // PAGE ON SUBMIT IF ALL INPUTS ARE UNCHECKED //

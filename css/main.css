@@ -171,6 +171,7 @@ button:hover {
 
 #quiz-container {
   background-image: url("https://www.onlygfx.com/wp-content/uploads/2017/06/watercolor-circle-pattern-orange.png");
+  background-position: center;
   display: none;
   flex-direction: column;
 }
@@ -239,12 +240,26 @@ input {
   opacity: 0;
 }
 
+.biscuit-result {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 80px;
+  font-weight: 200;
+  color: #1f2323;
+  text-shadow: 2px 2px 0px #F57B2B;
+}
+
+.biscuit-desc {
+  font-family: 'Encode Sans', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+}
+
 .fade-in {
-  animation: fade 0.8s forwards;
+  animation: fade 1.2s forwards;
 }
 
 .fade-out {
-  animation: fade 0.8s forwards reverse;
+  animation: fade 1.2s forwards reverse;
 }
 
 @keyframes fade {
@@ -273,13 +288,26 @@ input {
   font-size: 15px;
 }
 
-.biscuit-result {
-  font-family: 'Cabin Sketch', cursive;
-  font-size: 80px;
-  font-weight: 200;
-}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 45px;
+  }
+  h1 i {
+    font-size: 60px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  #results p {
+    font-size: 20px;
+  }
+  .biscuit-result {
+    font-size: 45px;
+  }
+} 
 
-@media (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   fieldset { 
     width: 90%;
   }
